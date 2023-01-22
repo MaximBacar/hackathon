@@ -6,33 +6,89 @@
             COB - Dashboard
         </title>
         <meta charset="UTF-8">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
     </head>
     <body>
-        <h1>
-            Hi {{first_name}},
-        </h1>
+        
 
-        <table class="styled-table">
-            <thead>
-                <tr>
-                    <th>Price</th>
-                    <th>Name</th>
-                    <th>Location</th>
-                    <th>Date</th>
-                </tr>
-            </thead>
-            <tbody>
+        <div class="head">
+            <h1>
+                Hi {{first_name}},
+            </h1>
+        </div>
 
-                {% for transaction in transactions%}
-                    <tr>
-                        <td>{{transaction["price"]}}$</td>
-                        <td>{{transaction["name"]}}</td>
-                        <td>{{transaction["location"]}}</td>
-                        <td>{{transaction["date_time"].date()}} {{transaction["date_time"].hour}}:{{transaction["date_time"].minute}}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div id="add_tx_div">
+
+
+            <form method="post">
+                <label for="gross_price">Gross Price</label><br>
+                <input type="number" id="gross_price" name="gross_price" required><br>
+                <label for="name">Name</label><br>
+                <input type="text" id="name" name="name" required><br>
+                <label for="date_time">Date & Time</label><br>
+                <input type="datetime-local" id="date_time" name="date_time" required><br>
+                <label for="location">Location</label><br>
+                <input type="text" id="location" name="location" required><br>
+                
+
+
+                
+                <button type="submit" id="add_tx_btn">Add</button>
+                <button type="button" onclick="myFunction()" id="cancel_tx_btn">Cancel</button>
+            </form>
+
+        </div>
+
+        <div class="row">
+            <div class="body analytics">
+                <div id="Income">
+
+                </div>
+                <div id="expenses">
+                    
+                </div>
+            </div>
+
+            <div class="body data">
+                <p>Transactions</p>
+                <div id="subcribtions">
+
+                </div>
+
+                <div id="transactions">
+
+                    <table class="styled-table">
+                        <thead>
+                            <tr>
+                                <th>Price</th>
+                                <th>Name</th>
+                                <th>Location</th>
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+    
+                            {% for transaction in transactions%}
+                                <tr>
+                                    <td>{{transaction["price"]}}$</td>
+                                    <td>{{transaction["name"]}}</td>
+                                    <td>{{transaction["location"]}}</td>
+                                    <td>{{transaction["date_time"].date()}} {{transaction["date_time"].hour}}:{{transaction["date_time"].minute}}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <button onclick="myFunction()" id="add_tx">Add Transactions</button>
+
+                </div>
+                
+            </div>
+        </div>
+
+        
         
 
         <div id="Subscriptions">
@@ -43,6 +99,25 @@
 
         *{
             font-family: 'Open Sans', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body{
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        .body{
+            float: left;
+            height: 100vh;
+        }
+        .body.analytics{
+            width: 65%;
+            
+        }
+        .body.data{
+            width: 35%;
         }
 
         .styled-table{
@@ -51,10 +126,17 @@
             font-size: 0.9em;
             font-family: sans-serif;
             min-width: 400px;
+            border-radius: 1em;
             /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); */
         }
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
         .styled-table thead tr {
-            background-color: #643B9F;
+            background-color: rgb(227, 28, 95);
             color: #ffffff;
             text-align: left;
         }
@@ -73,9 +155,83 @@
         }
 
         .styled-table tbody tr:last-of-type {
-            border-bottom: 2px solid #643B9F;
+            border-bottom: 2px solid rgb(227, 28, 95);
+        }
+
+        #add_tx{
+            
+            display: inline-block;
+            outline: none;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 14px 24px;
+            border: none;
+            transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+            background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);
+            color: #fff;
+            text-align: center;
+                
+        }
+
+        #add_tx_div{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 500px;
+            height: 600px;
+            margin-top: -300px;
+            margin-left: -250px;
+            background-color: white;
+            border-radius: 25px;
+            box-shadow: 0 0 20px rgba(227, 28, 95, 0.15);
+            display: none;
+        }
+
+        #add_tx_btn{
+            display: inline-block;
+            outline: none;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 14px 24px;
+            border: none;
+            transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+            background: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);
+            color: #fff;
+            text-align: center;
+        }
+
+        #cancel_tx_btn{
+            display: inline-block;
+            outline: none;
+            cursor: pointer;
+            font-size: 16px;
+            line-height: 20px;
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 14px 24px;
+            border: none;
+            transition: box-shadow 0.2s ease 0s, -ms-transform 0.1s ease 0s, -webkit-transform 0.1s ease 0s, transform 0.1s ease 0s;
+            background: linear-gradient(to right, rgb(30, 230, 163) 0%, rgb(28, 227, 184) 50%, rgb(4, 215, 204) 100%);
+            color: #fff;
+            text-align: center;
         }
 
 
     </style>
+    <script>
+        function myFunction() {
+          var x = document.getElementById("add_tx_div");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
+        </script>
 </html>
