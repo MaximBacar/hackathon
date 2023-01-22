@@ -1,0 +1,69 @@
+
+
+.popup{
+    /* justify-content: center; */
+    /* align-items: center; */
+    width: 400px;
+    height: 350px;
+    position: fixed;
+    top: 30%;
+    left: 40%;
+    margin: -50px 0 0 -50px;
+    border:3px solid #643B9F;
+    border-radius: 12px;
+    background-color: white;
+}
+
+.inputTXT{
+    text-align: center;
+    font-size: x-large;
+}
+
+#email{
+    color: #643B9F;
+    text-align: center;
+
+}
+
+#password{
+    color: #643B9F;
+
+}
+
+.loginHeader{
+    left: 10;
+    color: #643B9F;
+    text-align: center;
+    font-size: 40px;
+    margin: 10px;
+
+}
+
+
+#popupClose{
+    position: relative;
+    top: 10px;
+    left: 330px;
+    height: 40px;
+    width: 50px;
+    right: 0;
+    cursor: pointer;
+}
+
+#loginBtn{
+    border: none;
+    color: #643B9F;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+
+
+}
+
+#loginBtn:hover{
+    background-color: #643B9F;
+    color: white;
+}

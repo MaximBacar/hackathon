@@ -1,0 +1,50 @@
+@keyframes example {
+    from {color: white;}
+    to {color: #643B9F;}
+  }
+  
+.fullMainPage{
+    position: relative;
+    top: 0;
+    height: 600px;    
+    background-image: url('background4.png');
+    background-size: 100% 100%;
+    background-position-y: 0px;
+    animation-name:example;
+    animation-duration: 4s;
+  
+}
+
+
+#mainTxt{
+    padding-top: 100px;
+    /* padding-right: 500px; */
+    font-size: 100px;
+    color: #643B9F;
+    text-align: center;
+    animation-name:example;
+    animation-duration: 4s;
+
+}
+
+#mainTxt2{
+    text-align: center;
+    font-size: 100px;
+    /* padding-right: 150px; */
+    color: #643B9F;
+    animation-name:example;
+    animation-duration: 4s;
+
+
+}
+
+#mainTxt3{
+    font-size: 100px;
+    /* padding-right: 100px; */
+    color: #643B9F;
+    text-align: center;
+    animation-name:example;
+    animation-duration: 4s;
+
+ 
+}
