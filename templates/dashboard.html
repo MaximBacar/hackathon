@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>
+            COB - Dashboard
+        </title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>
+            Hi {{first_name}},
+        </h1>
+
+        <div class="Transactions">
+            
+
+            <table>
+                <thead>
+                    
+                </thead>
+                <tbody>
+
+                    {% for i in range(5) %}
+                        <tr>
+                            <td>-34.14$</td>
+                            <td>Loblaws</td>
+                            <td>Montreal, QC</td>
+                            <td>2023-01-20 11:34</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div id="Subscriptions">
+
+        </div>
+    </body>
+    <style>
+
+        .Transactions{
+            border-radius: 25px;
+            border:  1px solid purple;
+            background-color: white;
+            /* box-shadow: purple 0px 0px 4px; */
+            width: 33%;
+            height: 50vh;
+
+            padding: 0 5px 0 5px;
+        }
+
+        #transaction{
+            
+            
+        }
+
+        #tx_data{
+            text-align: center;
+            display: inline-block;
+            background-color: red;
+        }
+
+        #separation{
+            width: 100%;
+            height: 1px;
+            background-color: gray;
+        }
+    </style>
+</html>

@@ -16,9 +16,24 @@ class AccountManager:
         print(name.isalpha())
         return name.isalpha()
 
+    def user_db_to_account(data : tuple) -> int:
+        account = data[0]
+        return account
+
+    def get_data_from_id(self, id : int):
+
+        with self.connection.cursor() as cursor:
+                cursor.execute(f"SELECT * FROM `accounts` WHERE `id` = {id};")
+                results = cursor.fetchall()[0]
+
+                if len(results) > 0:
+                    return True, {'email' : results[1],'first_name' : results[2], 'last_name' : results[3]}
+                else:
+                    return False, None
+
+
     def __init__(self, mysql_connection) -> None:
 
-        accounts : list[Account] = []
         self.connection = mysql_connection
         
 
@@ -27,13 +42,18 @@ class AccountManager:
         hashed_password = hashlib.sha256(clear_password.encode()).hexdigest()
 
         if AccountManager.check_mail(email) == False:
-            return False
+            return False, None
             
         with self.connection.cursor() as cursor:
                 cursor.execute(f"SELECT * FROM `accounts` WHERE `email` = '{email}' AND `password` = '{hashed_password}';")
                 results = cursor.fetchall()
-                for row in results:
-                    print(row)
+
+                if len(results) > 0:
+                    return True, AccountManager.user_db_to_account(results[0])
+                else:
+                    return False, None
+
+        
 
 
     def create_account(self, email, first_name, last_name, clear_password) -> bool:

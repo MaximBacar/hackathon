@@ -4,12 +4,13 @@ class Account:
 
     SUBSCRIPTION_KEYS = ('service_name', 'gross_price', 'start_date', 'end_date', 'pay_periods')
     TRANSACTION_KEYS = ()
+    
 
-    def __init__(self, transactions : list[dict]):
-        self._firstName = None
-        self._lastName = None
-        self._email = None
-        self._password_HASH = None
+    def __init__(self, account_id, first_name, last_name, email):
+        self._id = account_id
+        self._first_name = first_name
+        self._last_name = last_name
+        self._email = email
 
         self._transactions : list[dict]= []
         self._subscriptions : list[dict] = []
