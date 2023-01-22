@@ -53,9 +53,11 @@ CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_unicode_ci;
 
 INSERT INTO `accounts` VALUES (0,"maximbacar@hotmail.ca", "Maxim", "Bacar", "11ba65852271cd24c56c865a9635b90616326949ff2bf6cd07eacaf788bad320");
-INSERT INTO `accounts` VALUES (0,"TEST@hotmail.ca", "test_prenkm", "test_nom", "11ba65852271cd24c56c865a9635b90616326949ff2bf6cd07eacaf788bad320");
 
-INSERT INTO `transactions` VALUES (0, 1, 34.32, "DOLLARAMA", "2023-01-04 17:24:19", "Montreal, QC");
+
+INSERT INTO `transactions` VALUES (0, 1, 34.32, "DOLLARAMA", "2022-01-04 17:24:19", "Montreal, QC");
+INSERT INTO `transactions` VALUES (0, 1, 19.00, "TIM HORTONS", "2023-01-04 17:24:19", "Montreal, QC");
+INSERT INTO `transactions` VALUES (0, 1, 4.32, "DEP", "2021-01-04 17:24:19", "Montreal, QC");
 
 
 

@@ -38,11 +38,11 @@ def home():
 def dashboard():
     if session.get("user") == None:
         return redirect(url_for("home"))
-
     else:
-        print(manager.get_data_from_id(session["user"]))
 
-        return render_template("dashboard.html", first_name = manager.get_data_from_id(session["user"])[1]["first_name"])
+        transactions = manager.get_transactions_from_id(session["user"])
+
+        return render_template("dashboard.html", first_name = manager.get_data_from_id(session["user"])[1]["first_name"], transactions = transactions)
 
 
 @app.route("/register", methods=["POST", "GET"])

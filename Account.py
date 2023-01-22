@@ -40,6 +40,9 @@ class Account:
 
 
 
+
+print(datetime.now().date())
+
     
 
 

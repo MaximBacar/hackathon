@@ -32,6 +32,27 @@ class AccountManager:
                     return False, None
 
 
+    def get_transactions_from_id(self, id : int):
+
+        with self.connection.cursor() as cursor:
+            cursor.execute(f"SELECT * FROM `transactions` WHERE `user_id` = '{id}' ORDER BY `date_time` DESC;")
+            results = cursor.fetchall()
+
+            transactions = []
+
+            for result in results:
+                data = {
+                    "name" : result[3],
+                    "price" : result[2],
+                    "date_time" : result[4],
+                    "location" : result[5]
+                }
+
+                transactions.append(data)
+
+            return transactions
+
+
     def __init__(self, mysql_connection) -> None:
 
         self.connection = mysql_connection
